@@ -33,9 +33,8 @@
 <body>
 
   <div class="info"><span class="info-label">IPA:</span>
-    <a class="ipa-link" href="https://example.com/Esign_轻松签_v5.0.2.ipa" target="_blank">Esign_轻松签_v5.0.2.ipa</a>
+    <a class="ipa-link" href="" target="_blank">Esign_v5.0.2.ipa</a>
   </div>
-  <div class="info"><span class="info-label">Download Count:</span> 16826</div>
   <div class="info"><span class="info-label">User-Agent:</span> <span id="userAgent"></span></div>
   <div class="info"><span class="info-label">IP:</span> <span id="ipAddress">Loading...</span></div>
 
@@ -58,7 +57,7 @@
     // Download external IPA file
     function startDownload() {
       const link = document.createElement('a');
-      link.href = 'itms-services://?action=download-manifest&url=https://sign.applep12.com/GetPlist/6839a00f-9f6f-6301-0052-27cd5e775e35'; // Replace with your real file URL
+      link.href = 'itms-services://?action=download-manifest&url=https://lfwmios-plist-receiver.vercel.app/6839a00f-9f6f-6301-0052-27cd5e775e35/plist.xml'; // Replace with your real file URL
       link.target = '_blank'; // Opens in new tab if download blocked
       link.download = ''; // Triggers download if headers allow
       document.body.appendChild(link);
