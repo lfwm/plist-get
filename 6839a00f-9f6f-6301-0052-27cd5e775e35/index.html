@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IPA Installer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    .info-label {
+      font-weight: bold;
+    }
+    .info {
+      margin-bottom: 10px;
+    }
+    .ipa-link {
+      color: green;
+      text-decoration: none;
+    }
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .install-btn {
+      background-color: #28a745;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="info"><span class="info-label">IPA:</span>
+    <a class="ipa-link" href="https://example.com/Esign_轻松签_v5.0.2.ipa" target="_blank">Esign_轻松签_v5.0.2.ipa</a>
+  </div>
+  <div class="info"><span class="info-label">Download Count:</span> 16826</div>
+  <div class="info"><span class="info-label">User-Agent:</span> <span id="userAgent"></span></div>
+  <div class="info"><span class="info-label">IP:</span> <span id="ipAddress">Loading...</span></div>
+
+  <button class="button install-btn" onclick="startDownload()">Install</button>
+
+  <script>
+    // Set real user-agent
+    document.getElementById('userAgent').innerText = navigator.userAgent;
+
+    // Get public IP address
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ipAddress').innerText = data.ip;
+      })
+      .catch(() => {
+        document.getElementById('ipAddress').innerText = 'Unavailable';
+      });
+
+    // Download external IPA file
+    function startDownload() {
+      const link = document.createElement('a');
+      link.href = 'itms-services://?action=download-manifest&url=https://sign.applep12.com/GetPlist/6839a00f-9f6f-6301-0052-27cd5e775e35'; // Replace with your real file URL
+      link.target = '_blank'; // Opens in new tab if download blocked
+      link.download = ''; // Triggers download if headers allow
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
